@@ -1,3 +1,12 @@
+*~    # emacs buffer
+*.swp # vim buffer
+
+# some people really do this
+*.orig
+*.bak
+*.old
+
+# from `bundle gem'
 *.gem
 *.rbc
 .bundle
