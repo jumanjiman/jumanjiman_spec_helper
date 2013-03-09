@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+# vim: set ts=2 sw=2 ai et ruler syntax=ruby:
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'jumanjiman_spec_helper/version'
