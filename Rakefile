@@ -16,3 +16,13 @@ require "bundler/gem_tasks"
 task :default do |t|
   puts %x!rake -T!
 end
+
+require 'rake/dsl_definition'
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = 'spec/**/*_spec.rb'
+  t.rspec_opts = [
+    '--color',
+  ]
+end
