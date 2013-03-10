@@ -22,4 +22,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Shared contexts
+
+#### Environment variables
+
+Environment variables created in one rspec example can invalidate
+other examples, giving either false positives or false failures.
+This module cleans up your environment between examples.
+
+* Preserve environment variables that exist *before* rspec examples
+* Discard environment variables created *within* rspec examples
+
+Add to `spec/spec_helper.rb`:
+
+```ruby
+require 'jumanjiman_spec_helper/environment_context'
+RSpec.configure do |c|
+  # your normal config
+  c.include JumanjimanSpecHelper::EnvironmentContext
+end
+```
+
+That's it! Now environment variables will be automatically
+cleaned up between rspec examples.

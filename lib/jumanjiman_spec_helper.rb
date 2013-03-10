@@ -3,4 +3,5 @@ require "jumanjiman_spec_helper/version"
 
 module JumanjimanSpecHelper
   require 'jumanjiman_spec_helper/bundle'
+  require 'jumanjiman_spec_helper/environment_context'
 end
