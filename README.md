@@ -1,5 +1,7 @@
 # JumanjimanSpecHelper
 
+[![Build Status](https://travis-ci.org/jumanjiman/jumanjiman_spec_helper.png?branch=master)](https://travis-ci.org/jumanjiman/jumanjiman_spec_helper)
+
 TODO: Write a gem description
 
 ## Installation
