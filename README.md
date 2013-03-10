@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/jumanjiman/jumanjiman_spec_helper.png?branch=master)](https://travis-ci.org/jumanjiman/jumanjiman_spec_helper)
 
-TODO: Write a gem description
+This gem provides reusable components that can be helpful when
+writing rspec for [Puppet](https://puppetlabs.com/puppet/what-is-puppet/)
+modules.
 
 ## Installation
 
