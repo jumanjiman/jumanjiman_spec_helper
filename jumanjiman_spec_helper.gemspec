@@ -29,4 +29,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec', '2.12.0'
   gem.add_development_dependency 'rspec-expectations', '2.12.1'
   gem.add_development_dependency 'rspec-mocks', '2.12.2'
+  # https://github.com/freerange/mocha#bundler
+  gem.add_development_dependency 'minitest', '4.5.0'
+  gem.add_development_dependency 'mocha', '0.13.2'
 end

@@ -9,6 +9,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # common dependencies
 gems = [
+  'test/unit',   # https://github.com/freerange/mocha#bundler
+  'mocha/setup', # http://gofreerange.com/mocha/docs/Mocha/Configuration.html
 ]
 begin
   gems.each {|gem| require gem}
@@ -21,6 +23,9 @@ rescue Exception => e
 end
 
 RSpec.configure do |c|
+  # https://www.relishapp.com/rspec/rspec-core/v/2-12/docs/mock-framework-integration/mock-with-mocha!
+  c.mock_framework = :mocha
+
   # see output for all failures
   c.fail_fast = false
 
