@@ -22,4 +22,11 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  # http://docs.rubygems.org/read/chapter/20#development_dependencies
+  gem.add_development_dependency 'rake', '>= 10.0'
+  gem.add_development_dependency 'rspec-core', '2.12.2'
+  gem.add_development_dependency 'rspec', '2.12.0'
+  gem.add_development_dependency 'rspec-expectations', '2.12.1'
+  gem.add_development_dependency 'rspec-mocks', '2.12.2'
 end
