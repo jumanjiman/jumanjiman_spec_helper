@@ -6,8 +6,11 @@ rvm:
   - 1.9.3
   - 2.0.0
 
+before_script:
+  - 'bundle install'
+
 script:
-  - 'rake -T'
+  - 'rake spec'
 
 # http://about.travis-ci.org/docs/user/notifications/#Email-notifications
 notifications:
