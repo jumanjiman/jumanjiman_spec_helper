@@ -31,6 +31,15 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
       ENV[key1].should == value
     end
 
+    it 'restores environment variable if changed within example' do
+      group = RSpec::Core::ExampleGroup.describe do
+        include JumanjimanSpecHelper::EnvironmentContext
+        it {ENV[key1] = value.reverse} # change env var in example
+      end
+      group.run(@reporter)
+      ENV[key1].should == value
+    end
+
     it 'discards environment variable created within example' do
       group = RSpec::Core::ExampleGroup.describe do
         include JumanjimanSpecHelper::EnvironmentContext
@@ -47,6 +56,14 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
       end
       group.run(@reporter)
       ENV[key1].should == value
+    end
+
+    it 'preserves environment variable if changed within example' do
+      group = RSpec::Core::ExampleGroup.describe do
+        it {ENV[key1] = value.reverse} # change env var in example
+      end
+      group.run(@reporter)
+      ENV[key1].should == value.reverse
     end
 
     it 'preserves environment variable created within example' do
