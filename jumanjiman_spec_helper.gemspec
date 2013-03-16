@@ -23,7 +23,11 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  # == Dependencies ==
+  # http://guides.rubygems.org/patterns/
+  # http://docs.rubygems.org/read/chapter/20#dependencies
   # http://docs.rubygems.org/read/chapter/20#development_dependencies
+
   gem.add_development_dependency 'rake', '>= 10.0'
   gem.add_development_dependency 'rspec-core', '2.12.2'
   gem.add_development_dependency 'rspec', '2.12.0'

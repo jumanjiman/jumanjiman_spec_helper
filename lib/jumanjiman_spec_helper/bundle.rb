@@ -1,10 +1,17 @@
 # vim: set ts=2 sw=2 ai et ruler:
+dependencies = [
+  'bundler',
+  'yaml',
+]
+begin
+  dependencies.each {|gem| require gem}
+rescue
+  require 'rubygems' # ugh, support older distros
+  retry
+end
+
 module JumanjimanSpecHelper
   module Bundle
-    require 'rubygems' # ugh, support older distros
-    require 'bundler'
-    require 'yaml'
-
     # lock dependencies and setup load paths
     # http://myronmars.to/n/dev-blog/2012/12/5-reasons-to-avoid-bundler-require
     # http://anti-pattern.com/bundler-setup-vs-bundler-require
