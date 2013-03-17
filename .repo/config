@@ -1,0 +1,38 @@
+#############################################################
+# vim: set ts=2 sw=2 ai et ruler:
+#
+# We are a cross-platform shop.
+# Do not allow OS personalities in this configuration.
+#
+# Note: This is not a dumping ground for personal preferences.
+#       Apply a minimal configuration to the local .git/config
+#       for consistency among authors.
+#       Be selective when adding parameters here.
+#       Do not usurp user preferences lightly.
+#
+# ref for gitconfig directives:
+# http://git-scm.com/docs/git-config
+#
+# also see:
+# http://nuclearsquid.com/writings/git-tricks-tips-workflows/
+# https://github.com/cypher/dotfiles
+#############################################################
+[core]
+autocrlf = false # preserve line endings (we're cross-platform)
+
+[branch]
+autosetuprebase = always # maintain linear history
+
+[push]
+default = tracking # push to tracking branch, not upstream
+
+[remote "upstream"]
+url = https://github.com/jumanjiman/jumanjiman_spec_helper.git
+fetch = +refs/heads/*:refs/remotes/upstream/*
+
+[alias]
+# use these when reviewing PRs
+authors = shortlog -sn
+behind  = !git log ..upstream/master --oneline
+ahead   = !git log upstream/master.. --oneline
+files   = !git diff --name-only upstream/master..
