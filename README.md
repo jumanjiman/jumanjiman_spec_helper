@@ -104,3 +104,99 @@ end
 
 That's it! Now environment variables are automatically
 cleaned up between rspec examples.
+
+### Git helper
+
+`JumanjimanSpecHelper::Git` adds...
+
+* a custom `repo_root` setting to the rspec configuration
+* a custom rake task to merge `.repo/config` into `.git/config`
+
+#### Discovery (Queries)
+
+You may want to discover the path to a repo.
+
+1. Add to `spec/spec_helper.rb`:
+
+   ```ruby
+   require 'jumanjiman_spec_helper/git'
+   ```
+
+2. Add to any spec:
+
+   ```ruby
+   require 'spec_helper'
+
+   # either...
+   absolute_path_to_repo = RSpec.configuration.repo_root
+
+   # or...
+   absolute_path_to_repo = JumanjimanSpecHelper::Git.repo_root
+   ```
+
+#### Configuration
+
+Perhaps you want to ensure every clone of your repo has
+a specific git configuration. You may want to ensure a
+linear history within the repo or provide a commit template
+to help authors use a specific local format. Specifically,
+assume you want to:
+
+* Provide a git commit template specific to the repo,
+  overriding system-wide or user-default setting
+
+* Replace `REPO_ROOT` with the actual path to the repo as it
+  exists on the user's workstation ("REPO_ROOT" gets replaced)
+
+* Set `autosetuprebase` as `always`,
+  overriding system-wide or user-default setting
+
+Steps:
+
+1. Add to `Rakefile`:
+
+   ```ruby
+   require 'jumanjiman_spec_helper/git'
+
+   # either merge the configs via method call...
+   JumanjimanSpecHelper::Git.update_git_config
+
+   # or add a task dependency, such as...
+   task :default => 'j:update_git_config' do |t|
+     # your normal default task code
+   end
+
+   # or...
+   RSpec::Core::RakeTask.new(:spec => 'j:update_git_config') do |t|
+     t.pattern = 'spec/*/*_spec.rb'
+   end
+   ```
+
+2. Create `.repo/config` with git configuration info, such as:
+
+   ```
+   [branch]
+   autosetuprebase = always # maintain linear history
+
+   [commit]
+   template = REPO_ROOT/.repo/commit.template # provide guidance
+   ```
+
+3. Create `.repo/commit.template`, such as:
+
+   ```
+   modulename: purpose
+   #========= your lines should not be wider than this ============
+   # modulename should be name of puppet module
+   # purpose should be high-level summary
+   # Use present tense: "do"; NOT "doing", "did", or "will"
+
+   # Request for Change number, "TBD", or "not required"
+   RFC:
+
+   # Briefly describe affected nodes/environments
+   Impacted area:
+
+   More info:
+   #========= your lines should not be wider than this ============
+   ```

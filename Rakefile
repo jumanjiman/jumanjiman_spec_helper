@@ -8,6 +8,12 @@ JumanjimanSpecHelper::Bundle.setup :development
 # bundle skeleton
 require "bundler/gem_tasks"
 
+# add namespaced rake tasks
+require 'jumanjiman_spec_helper/git'
+
+# always keep clone config up-to-date
+JumanjimanSpecHelper::Git.update_git_config
+
 task :default do |t|
   puts %x!rake -T!
 end

@@ -2,6 +2,7 @@
 require "jumanjiman_spec_helper/version"
 require 'jumanjiman_spec_helper/bundle'
 require 'jumanjiman_spec_helper/environment_context'
+require 'jumanjiman_spec_helper/git'
 
 module JumanjimanSpecHelper
 end

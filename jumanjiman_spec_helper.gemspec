@@ -28,9 +28,21 @@ Gem::Specification.new do |gem|
   # http://docs.rubygems.org/read/chapter/20#dependencies
   # http://docs.rubygems.org/read/chapter/20#development_dependencies
 
+  # these are needed for both dev and runtime
+  common_dependencies = {
+    'inifile' => '~> 2.0.2', # https://github.com/TwP/inifile
+    'minigit' => '~> 0.0.3', # https://github.com/3ofcoins/minigit
+    'rake'    => '>= 10.0',
+    'rspec'   => '2.12.0',
+  }
+  common_dependencies.each do |dep, ver|
+    gem.add_dependency             dep, ver
+    gem.add_development_dependency dep, ver
+  end
+
+  # these are only needed for dev
   gem.add_development_dependency 'rake', '>= 10.0'
   gem.add_development_dependency 'rspec-core', '2.12.2'
-  gem.add_development_dependency 'rspec', '2.12.0'
   gem.add_development_dependency 'rspec-expectations', '2.12.1'
   gem.add_development_dependency 'rspec-mocks', '2.12.2'
   # https://github.com/freerange/mocha#bundler
