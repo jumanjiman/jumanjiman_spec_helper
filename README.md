@@ -28,9 +28,17 @@ Or install it yourself as:
 
 Environment variables created in one rspec example can invalidate
 other examples, giving either false positives or false failures.
-This module cleans up your environment between examples.
+
+The default rspec configuration shows three behaviors:
 
 * Preserve environment variables that exist *before* rspec examples
+* Clobber environment variables modified *within* rspec examples
+* Preserve environment variables created *within* rspec examples
+
+This module cleans up your environment between examples:
+
+* Preserve environment variables that exist *before* rspec examples
+* Restore environment variables modified *within* rspec examples
 * Discard environment variables created *within* rspec examples
 
 Add to `spec/spec_helper.rb`:
@@ -43,5 +51,5 @@ RSpec.configure do |c|
 end
 ```
 
-That's it! Now environment variables will be automatically
+That's it! Now environment variables are automatically
 cleaned up between rspec examples.

@@ -23,7 +23,7 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
   end
 
   context 'when included' do
-    it 'preserves environment variable created before example' do
+    it 'preserves pre-existing env var' do
       group = RSpec::Core::ExampleGroup.describe do
         include JumanjimanSpecHelper::EnvironmentContext
       end
@@ -31,7 +31,7 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
       ENV[key1].should == value
     end
 
-    it 'restores environment variable if changed within example' do
+    it 'restores pre-existing env var if changed within example' do
       group = RSpec::Core::ExampleGroup.describe do
         include JumanjimanSpecHelper::EnvironmentContext
         it {ENV[key1] = value.reverse} # change env var in example
@@ -40,7 +40,7 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
       ENV[key1].should == value
     end
 
-    it 'discards environment variable created within example' do
+    it 'discards env var if created within example' do
       group = RSpec::Core::ExampleGroup.describe do
         include JumanjimanSpecHelper::EnvironmentContext
         it {ENV[key2] = value} # create env var in example
@@ -50,15 +50,15 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
     end
   end
 
-  context 'when not included' do
-    it 'preserves environment variable created before example' do
+  context 'when not included (i.e., default rspec behavior)' do
+    it 'preserves pre-existing env var' do
       group = RSpec::Core::ExampleGroup.describe do
       end
       group.run(@reporter)
       ENV[key1].should == value
     end
 
-    it 'preserves environment variable if changed within example' do
+    it 'clobbers env var if changed within example' do
       group = RSpec::Core::ExampleGroup.describe do
         it {ENV[key1] = value.reverse} # change env var in example
       end
@@ -66,7 +66,7 @@ describe 'JumanjimanSpecHelper::EnvironmentContext' do
       ENV[key1].should == value.reverse
     end
 
-    it 'preserves environment variable created within example' do
+    it 'persists env var if created within example' do
       group = RSpec::Core::ExampleGroup.describe do
         it {ENV[key2] = value} # create env var in example
       end
