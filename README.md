@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/jumanjiman/jumanjiman_spec_helper.png?branch=master)](https://travis-ci.org/jumanjiman/jumanjiman_spec_helper)
 
+[![Coverage Status](https://coveralls.io/repos/jumanjiman/jumanjiman_spec_helper/badge.png?branch=master)](https://coveralls.io/r/jumanjiman/jumanjiman_spec_helper)
+
 This gem provides reusable components that can be helpful when
 writing rspec for [Puppet](https://puppetlabs.com/puppet/what-is-puppet/)
 modules.
