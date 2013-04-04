@@ -48,4 +48,7 @@ Gem::Specification.new do |gem|
   # https://github.com/freerange/mocha#bundler
   gem.add_development_dependency 'minitest', '4.5.0'
   gem.add_development_dependency 'mocha', '0.13.2'
+
+  # https://coveralls.io/docs/ruby
+  gem.add_development_dependency 'coveralls'
 end

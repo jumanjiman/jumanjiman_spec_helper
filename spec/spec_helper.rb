@@ -11,6 +11,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 gems = [
   'test/unit',   # https://github.com/freerange/mocha#bundler
   'mocha/setup', # http://gofreerange.com/mocha/docs/Mocha/Configuration.html
+  'coveralls',   # https://coveralls.io/docs/ruby
   'jumanjiman_spec_helper',
 ]
 begin
@@ -22,6 +23,9 @@ rescue Exception => e
   puts horizontal_rule(e.message.length)
   exit(1)
 end
+
+# https://coveralls.io/docs/ruby
+Coveralls.wear!
 
 RSpec.configure do |c|
   # https://www.relishapp.com/rspec/rspec-core/v/2-12/docs/mock-framework-integration/mock-with-mocha!
