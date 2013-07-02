@@ -24,3 +24,10 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+
+# YARD generated documentation
+.yardoc
+doc/
+
+# http://c9.io web-based editor craps on your directory
+.c9revisions/

@@ -1,0 +1,12 @@
+--title="Jumanjiman Spec Helper"
+--readme=README.md
+--protected
+--private
+--markup=markdown
+--markup-provider=redcarpet
+--plugin=yard-rspec
+modules/**/*.rb
+spec/**/*.rb
+Rakefile
+-
+CONTRIBUTING.md
