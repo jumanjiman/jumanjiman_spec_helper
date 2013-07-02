@@ -51,4 +51,26 @@ Gem::Specification.new do |gem|
 
   # https://coveralls.io/docs/ruby
   gem.add_development_dependency 'coveralls'
+
+  # -----------------------------------------------------------------
+  # documentation gems similar to http://rubydoc.info/
+
+  # see .yardopts and http://yardoc.org/
+  gem.add_development_dependency 'yard'
+
+  # enable gfm special features, such as tables in markdown
+  gem.add_development_dependency 'github-markup'
+
+  # redcarpet 2.x series does not play nicely with github-markup
+  gem.add_development_dependency 'redcarpet', '~> 1.0'
+
+  # plugin to auto-document rspec tests
+  gem.add_development_dependency 'yard-rspec'
+
+  # do not use tomdoc; it's visually nice in plain-text,
+  # but it doesn't render as nicely as redcarpet + yard tags
+  #gem.add_development_dependency 'yard-tomdoc'
+
+  # end documentation gems
+  # -----------------------------------------------------------------
 end
