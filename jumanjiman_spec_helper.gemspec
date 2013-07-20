@@ -31,7 +31,7 @@ Gem::Specification.new do |gem|
   # these are needed for both dev and runtime
   common_dependencies = {
     'inifile' => '~> 2.0.2', # https://github.com/TwP/inifile
-    'minigit' => '~> 0.0.3', # https://github.com/3ofcoins/minigit
+    'minigit' => '~> 0.0.4', # https://github.com/3ofcoins/minigit
     'rake'    => '>= 10.0',
     'rspec'   => '2.12.0',
   }
